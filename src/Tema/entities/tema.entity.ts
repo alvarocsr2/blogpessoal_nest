@@ -3,9 +3,14 @@ import { IsNotEmpty, Length } from 'class-validator';
 import {
   Column,
   Entity,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Postagem } from '../../postagem/entities/postagem.entity';
+import { Usuario } from '../../usuario/entities/usuario.entity';
 
 @Entity({ name: 'tb_temas' })
 export class Tema {
@@ -18,6 +23,9 @@ export class Tema {
   @Column({ length: 255, nullable: false }) // VARCHAR(255) NOT NULL
   descricao: string;
 
-  @UpdateDateColumn()
-  data: Date;
+@OneToMany( () => Postagem, (postagem) => postagem.tema)
+postagem: Postagem[]; //Array de retorno
+
+@OneToMany( () => Usuario, (usuario) => usuario.tema)
+usuario: Usuario[]; //Array de retorno
 }
