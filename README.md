@@ -1,13 +1,3 @@
-Virtuoso
-virtuoso.og
-•
-❤️Trabalhando a vida enquanto ela me espera..
-Canal focado em expressar e tirar dúvidas sobre os conteúdos de Nest
-
-Rafael Queiróz — 27/02/2026 08:07
-@Participantes Bom dia Turma JS13!
-
-Seguem os conteúdos sobre Introdução ao Nest, que utilizaremos no período da tarde (sexta-feira 27/02/2026):
 
 Introdução ao Protocolo HTTP:
 
