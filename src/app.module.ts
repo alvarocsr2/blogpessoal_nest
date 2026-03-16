@@ -17,8 +17,8 @@ import { UsuarioModule } from './usuario/usuario.module';
       password: 'root',
       database: 'db_blogpessoal',
       entities: [Postagem, Tema, Usuario],
-      synchronize: true,
-      logging: true,
+      synchronize: true, 
+     
     }),
     PostagemModule,
     TemaModule,
