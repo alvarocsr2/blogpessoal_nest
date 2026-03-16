@@ -3,34 +3,40 @@ import { IsNotEmpty, Length } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { Tema } from '../../Tema/entities/tema.entity';
 import { Usuario } from '../../usuario/entities/usuario.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity({ name: 'tb_postagens' })
 export class Postagem {
+  @ApiProperty()
   @PrimaryGeneratedColumn() // PRIMARY KEY(id) AUTO INCREMENT
   id: number;
 
+  @ApiProperty()
   @Transform(({ value }: TransformFnParams) => value?.trim()) // Remove espaçamentos em branco
   @IsNotEmpty() // Força digitação
   @Length(5, 100, { message: 'O texto deve ser entre 5 e 100 caracteres ' })
   @Column({ length: 100, nullable: false }) // VARCHA25R(100) NOT NULL
   titulo: string;
 
+  @ApiProperty()
   @Transform(({ value }: TransformFnParams) => value?.trim()) // Remove espaçamentos em branco
   @IsNotEmpty() // Força digitação
   @Length(10, 1000, { message: 'O texto deve ser entre 10 e 1000 caracteres ' })
   @Column({ length: 2000, nullable: false }) // VARCHAR(2000) NOT NULL
   texto: string;
 
+  @ApiProperty()
   @UpdateDateColumn()
     data: Date;
-    
+ 
+@ApiProperty({ type: () => Tema })   
 @ManyToOne( () => Tema, (tema) => tema.postagem, {
       onDelete: "CASCADE"
   
   })
   tema: Tema;
 
-
+    @ApiProperty({ type: () => Usuario })
     @ManyToOne( () => Usuario, (usuario) => usuario.postagem, {
       onDelete: "CASCADE"
   

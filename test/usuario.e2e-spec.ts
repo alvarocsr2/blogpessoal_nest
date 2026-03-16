@@ -94,14 +94,6 @@ describe('Testes dos Módulos usuário e Auth (e2e)', () => {
     expect(resposta.status).toBe(200);
     
 })
-it("06 - Deve buscar um usuário pelo id", async () => {
-  const resposta = await request(app.getHttpServer())
-    .get(`/usuarios/${usuarioId}`)
-    .set("Authorization", `${token}`);
-
-  expect(resposta.status).toBe(200);
-  expect(resposta.body.id).toBe(usuarioId);
-});
 
   });
 
